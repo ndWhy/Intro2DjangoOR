@@ -1,3 +1,4 @@
+from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.timezone import now
 
@@ -20,12 +21,17 @@ class Book(models.Model):
 		if (self.review and self.date_reviewed is None):
 			self.date_reviewed = now()
 		super(Book, self).save(*args, **kwargs)
+		
+		
 	
 class Author(models.Model):
 	name = models.CharField(max_length=70, help_text="Use pen name, not real name", unique=True)
 	
 	def __str__(self):
 		return self.name
+		
+	def get_absolute_url(self):
+		return reverse('author-detail', kwargs={'pk': self.pk})
 		
 		
 			

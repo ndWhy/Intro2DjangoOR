@@ -7,7 +7,7 @@ class ReviewForm(forms.Form):
 	Form for reviewing a book
 	"""
 	
-	is_favorite = forms.BooleanField(
+	is_favourite = forms.BooleanField(
 		label='Favorite?',
 		help_text='In your top 100 books of all time?',
 		required=False,
